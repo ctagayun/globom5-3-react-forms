@@ -1,6 +1,6 @@
 //import Bids from "../bids/Bids";
 import { Link, useParams } from "react-router-dom";
-import { useFetchHouse } from "../hooks/HouseHooks";
+import { useDeleteHouse, useFetchHouse } from "../hooks/HouseHooks";
 import ApiStatus from "../apiStatus";
 import { currencyFormatter } from "../config";
 import defaultImage from "./defaultPhoto";
@@ -15,7 +15,7 @@ const HouseDetail = () => {
   //*Call the useFetchHouse hook passing the id
   const { data, status, isSuccess } = useFetchHouse(houseId);
 
-  //const deleteHouseMutation = useDeleteHouse();
+  const deleteHouseMutation = useDeleteHouse();
 
   //*Lets reuse our APIStatus component
   if (!isSuccess) return <ApiStatus status={status} />;
@@ -49,8 +49,8 @@ const HouseDetail = () => {
             <button
               className="btn btn-danger w-100"
               onClick={() => {
-                // if (window.confirm("Are you sure?"))
-                //   deleteHouseMutation.mutate(data);
+                if (window.confirm("Are you sure?"))
+                  deleteHouseMutation.mutate(data);
               }}
             >
               Delete
