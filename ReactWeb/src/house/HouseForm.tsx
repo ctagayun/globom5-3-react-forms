@@ -54,9 +54,16 @@ const HouseForm = ({ house, submitted }: Args) => {
           value={houseState.address} //*meaning the value of the input, in other words 
                                      //*the text visible in the input, is the value address 
                                      //*property of the houseState
-          onChange={(e) => //* the handler gets an object "e" containing information about 
-                           //*the event.
-            setHouseState({ ...houseState, address: e.target.value }) //*onChange event fires when something changes
+          onChange={(e) => //* first the handler gets an object "e" containing information about the event. 
+            //* 1. setHouseState() is called. And as a parameter a new house instance has to be supplied.
+            //*    (e.g houseState)   
+            //* 2. then spread operator is applied to houseState (...houseState). We are copying all 
+            //*    properties and values (KV pair) from the "house"
+            //* 3. address: e.target.value = we are overwriting the address property of the house
+            //*    with the value of the input box
+            //* e.target.value = contains the value of the input box
+                  
+            setHouseState({ ...houseState, address: e.target.value }) 
           }
         />
       </div>
