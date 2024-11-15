@@ -24,10 +24,16 @@ const HouseForm = ({ house, submitted }: Args) => {
   //*attribute/value pairs to a JSX element in this case "houseState"
   const [houseState, setHouseState] = useState({ ...house });
 
-
+  //*React.MouseEventHandler<HTMLButtonElement> is the type of the onSubmit function
+  //*which gets an event information object again (e.g.  async (e))
   const onSubmit: React.MouseEventHandler<HTMLButtonElement> = async (e) => {
-    e.preventDefault();
-    submitted(houseState);
+    e.preventDefault(); //*needed because the default browser behavior for 
+                        //*a submit is to generate a POST request to the server with a form data.
+                        //*we want to control that ourselves so we are opting out.
+    submitted(houseState);  //*Now the parent component has to be notified of the submission.
+                            //*So the function (e.g submitted) has to be called here that was provided in the
+                            //*props passing in the "houseState" object that has been kept up
+                            //*to date while the user filled out the input.
   };
 
   const onFileSelected = async (
@@ -55,14 +61,16 @@ const HouseForm = ({ house, submitted }: Args) => {
                                      //*the text visible in the input, is the value address 
                                      //*property of the houseState
           onChange={(e) => //* first the handler gets an object "e" containing information about the event. 
-            //* 1. setHouseState() is called. And as a parameter a new house instance has to be supplied.
+            //* 1. setHouseState prop is called. And as a parameter a new house instance has to be supplied.
             //*    (e.g houseState)   
             //* 2. then spread operator is applied to houseState (...houseState). We are copying all 
             //*    properties and values (KV pair) from the "house"
             //* 3. address: e.target.value = we are overwriting the address property of the house
             //*    with the value of the input box
             //* e.target.value = contains the value of the input box
-                  
+                
+            //* Because the state change, the component will rerender thereby displayin the new 
+            //* value of the address input box.
             setHouseState({ ...houseState, address: e.target.value }) 
           }
         />
