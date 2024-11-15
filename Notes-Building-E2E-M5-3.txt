@@ -290,11 +290,14 @@ Module 5: Creating, Updating and Deleting Data
      
      - both ADD and EDIT both use same child form component
   
-     - create HoseForm.tsx under the house folder
-     
+     - create HoseForm.tsx under the house folder (see my detailed comments)
+
   4. Reusing Components
+     - https://app.pluralsight.com/ilx/video-courses/fbbac3b2-0e56-464b-92f2-0b877f92f12c/8df0ce24-cefa-421a-9111-2ab738544221/85833230-d06e-4234-947d-8397159d155e
 
+     - create HouseAdd.tsx component under src/house (see my detailed comments)
 
+      - create HouseEdit.tsx component under src/house (see my detailed comments)
   4. API Validation
 
 

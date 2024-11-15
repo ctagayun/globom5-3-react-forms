@@ -4,8 +4,13 @@ import ValidationSummary from "../ValidationSummary";
 import HouseForm from "./HouseForm";
 
 const HouseAdd = () => {
+
+  //*First get the object (hook) useAddHouse() that can do the mutation
+  //* is defined in src/hook/HouseHooks.ts
   const addHouseMutation = useAddHouse();
 
+  //*We need a house instance to pass to the form component.
+  //*Because this is an add all the properties are empty or zero
   const house: House = {
     address: "",
     country: "",
@@ -20,9 +25,18 @@ const HouseAdd = () => {
       {addHouseMutation.isError && (
         <ValidationSummary error={addHouseMutation.error} />
       )}
+      
       <HouseForm
-        house={house}
-        submitted={(house) => addHouseMutation.mutate(house)}
+        //*All that is left now is to render HouseForm, passing in the "house" as prop
+        house={house} 
+        //*Next write an arrow function for "submitted"
+        //*We know it gets a house passed in as prop to "submitted()"
+        //*Now //* is defined in src/hook/HouseHooks.ts
+
+        //*addHouseMutation object is an instance of useAddHouse() which is defined in src/hook/HouseHooks.ts
+        //*"mutate" can be called on the mutation object passing in the house.
+        //*This will do the actual POST request
+        submitted={(house) => addHouseMutation.mutate(house)} 
       />
     </>
   );
