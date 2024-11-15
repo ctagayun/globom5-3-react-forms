@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3Fr9mw0fjf4=",
+  "dgSpecHash": "6A1omp3NY54=",
   "success": true,
-  "projectFilePath": "C:\\_AMyReactDev\\chito-guijt-course-building-e2e-react-app-webapi-using-netcore8\\globom5-3-react-forms\\Api\\Api.csproj",
+  "projectFilePath": "C:\\_AMyReactDev\\chito-guijt-course-building-e2e-react-app-webapi-using-netcore8\\globom5-3-react-forms-add-edit-delete-components\\Api\\Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\tiger\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\tiger\\.nuget\\packages\\microsoft.aspnetcore.openapi\\8.0.10\\microsoft.aspnetcore.openapi.8.0.10.nupkg.sha512",
