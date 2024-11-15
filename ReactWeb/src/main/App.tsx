@@ -11,6 +11,8 @@ import HouseList from '../house/HouseList'
 import './App.css'
 import Header from './Header'
 import HouseDetail from '../house/HouseDetail'
+import HouseAdd from '../house/HouseAdd'
+import HouseEdit from '../house/HouseEdit'
 
 function App() {
 
@@ -26,10 +28,11 @@ function App() {
     <div className="container">
       <Header subtitle="Providing houses all over the world"/>
       <Routes>  
-        //*Right now the only route we have is the root url. When the root url is 
-        //*hit render the houselist
+         //*When the root url is hit render the houselist
         <Route path="/" element={<HouseList />}></Route>
         <Route path="/house/:id" element={<HouseDetail />}></Route>
+        <Route path="/house/add" element={<HouseAdd />}></Route>
+        <Route path="/house/edit/:id" element={<HouseEdit />}></Route>
       </Routes>
     </div>
     </BrowserRouter>

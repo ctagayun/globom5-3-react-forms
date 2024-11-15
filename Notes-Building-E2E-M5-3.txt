@@ -298,6 +298,12 @@ Module 5: Creating, Updating and Deleting Data
      - create HouseAdd.tsx component under src/house (see my detailed comments)
 
       - create HouseEdit.tsx component under src/house (see my detailed comments)
+ 
+    - now add routes for HouseAdd and HouseDetail component in app.tsx
+
+    - next add button to HouseList component
+
+    - next create "edit" and "delete" button in HouseDetail component
   4. API Validation
 
 
