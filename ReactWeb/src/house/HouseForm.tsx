@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import toBase64 from "../toBase64";
 import { House } from "../types/house";
+import toBase64 from "../toBase64";
 
 //*This component needs 2 props: house instance and the 
 //*the function to be called
