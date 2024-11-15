@@ -2,13 +2,28 @@ import React, { useState } from "react";
 import toBase64 from "../toBase64";
 import { House } from "../types/house";
 
+//*This component needs 2 props: house instance and the 
+//*the function to be called
 type Args = {
   house: House;
-  submitted: (house: House) => void;
+  submitted: (house: House) => void; //*as a param we will supply a filled-up house
 };
 
+//*We destructure the house object and callback function.
+//*{ house, submitted }: Args -  means destructure the prop it in 
+//*type called "args"
 const HouseForm = ({ house, submitted }: Args) => {
+
+  //*Props are just used here to communicate between components.
+  //*We are not using them as component state.
+  //* useState({ ...house }) means the spread will use the values
+  //* we get from the prop.
+  //*JavaScript's spread operator allows us to literally spread all key/value pairs 
+  //*of an object to another object. This can also be done in React's JSX. 
+  //*To do that use spread operator '...' to pass all the object's key/value pairs as 
+  //*attribute/value pairs to a JSX element in this case "houseState"
   const [houseState, setHouseState] = useState({ ...house });
+
 
   const onSubmit: React.MouseEventHandler<HTMLButtonElement> = async (e) => {
     e.preventDefault();
@@ -28,6 +43,7 @@ const HouseForm = ({ house, submitted }: Args) => {
   };
 
   return (
+    //*Note we have  a FORM tag
     <form className="mt-2">
       <div className="form-group">
         <label htmlFor="address">Address</label>
@@ -35,9 +51,12 @@ const HouseForm = ({ house, submitted }: Args) => {
           type="text"
           className="form-control"
           placeholder="Address"
-          value={houseState.address}
-          onChange={(e) =>
-            setHouseState({ ...houseState, address: e.target.value })
+          value={houseState.address} //*meaning the value of the input, in other words 
+                                     //*the text visible in the input, is the value address 
+                                     //*property of the houseState
+          onChange={(e) => //* the handler gets an object "e" containing information about 
+                           //*the event.
+            setHouseState({ ...houseState, address: e.target.value }) //*onChange event fires when something changes
           }
         />
       </div>
@@ -76,7 +95,7 @@ const HouseForm = ({ house, submitted }: Args) => {
           }
         />
       </div>
-      <div className="form-group mt-2">
+      {/* <div className="form-group mt-2">
         <label htmlFor="image">Image</label>
         <input
           id="image"
@@ -87,7 +106,7 @@ const HouseForm = ({ house, submitted }: Args) => {
       </div>
       <div className="mt-2">
         <img src={houseState.photo}></img>
-      </div>
+      </div> */}
       <button
         className="btn btn-primary mt-2"
         disabled={!houseState.address || !houseState.country}
